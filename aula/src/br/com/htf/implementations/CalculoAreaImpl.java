@@ -1,10 +1,10 @@
-package br.com.htf.implementations;
+package aula.src.br.com.htf.implementations;
 import br.com.htf.contracts.CalculoArea;
 
 public class CalculoAreaImpl implements CalculoArea {
 
     private double base;
-    private double altura;
+    private static double altura;
     private double raio;
 
     public CalculoAreaImpl(double base, double altura, double raio) {

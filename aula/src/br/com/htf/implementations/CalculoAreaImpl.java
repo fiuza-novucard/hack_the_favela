@@ -32,4 +32,10 @@ public class CalculoAreaImpl implements CalculoArea {
         //this.raio;
         return 0;
     }
+
+    static public double calculoaleatorio(){
+        base = 1.19 * altura;
+        return 0;
+    }
+
 }

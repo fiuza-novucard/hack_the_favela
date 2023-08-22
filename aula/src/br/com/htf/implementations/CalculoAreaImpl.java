@@ -27,9 +27,4 @@ public class CalculoAreaImpl implements CalculoArea {
         return Math.PI * Math.pow(raio, 2);
     }
 
-    static public double calcularAny(){
-        altura = 0;
-        //this.raio;
-        return 0;
-    }
 }

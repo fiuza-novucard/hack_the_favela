@@ -10,4 +10,8 @@ public interface CalculoArea {
     static double calcularAreaQuadrado(double lado){
         return lado * lado;
     }
+    default double Oqueestoufazendomesmonemsei(){
+
+        return 0;
+    }
 }

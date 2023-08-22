@@ -4,4 +4,10 @@ public interface CalculoArea {
     public double calcularAreaRetangulo(double base, double altura);
     public double calcularAreaTriangulo(double base, double altura);
     public double calcularAreaCirculo(double raio);
+
+
+
+    static double calcularAreaQuadrado(double lado){
+        return lado * lado;
+    }
 }

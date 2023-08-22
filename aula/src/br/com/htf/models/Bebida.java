@@ -16,9 +16,6 @@ public class Bebida extends Produto {
         super(nome, preco, quantidade);
     }
 
-    @Override
-    public double calcularValorTotal() {
-        return this.getPreco() * this.getQuantidade();
-    }
+
 
 }

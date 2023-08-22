@@ -14,6 +14,42 @@ public class Supermercado {
         this.nome = nome;
     }
 
+    private double subtotal;
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public double getTotalCompra() {
+        return totalCompra;
+    }
+
+    public void setTotalCompra(double totalCompra) {
+        this.totalCompra = totalCompra;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public ArrayList<Produto> getCarrinhoDeCompras() {
+        return carrinhoDeCompras;
+    }
+
+    public void setCarrinhoDeCompras(ArrayList<Produto> carrinhoDeCompras) {
+        this.carrinhoDeCompras = carrinhoDeCompras;
+    }
+
+    private double totalCompra;
+    private double desconto = 10;
     private String nome;
     private ArrayList<Produto> carrinhoDeCompras;
 
@@ -29,7 +65,7 @@ public class Supermercado {
         this.carrinhoDeCompras.remove(produto);
     }
 
-    public double calcularSubtotal() {
+    public void calcularSubtotal() {
         double subtotal = 0;
         for (Produto produto : carrinhoDeCompras) {
             double valorVendaProduto = produto.calcularValorVenda();
@@ -37,7 +73,7 @@ public class Supermercado {
             subtotal += valorVendaProduto;
         }
         System.out.println("O valor total da compra é " + subtotal);
-        return subtotal;
+        this.subtotal = subtotal;
     }
 
     public double calcularPesoTotal() {
@@ -54,5 +90,14 @@ public class Supermercado {
         return pesoTotal;
     }
 
+    public void aplicarDesconto() {
+        this.totalCompra = this.subtotal;
+        if (this.subtotal >= 50) {
+            this.totalCompra = this.subtotal - (this.subtotal * (this.desconto / 100));
+        }
+
+        //IF INLINE
+        // this.totalCompra = (this.subtotal >= 50)? this.subtotal - (this.subtotal * (this.desconto / 100)) : this.subtotal;
+    }
 
 }

@@ -17,6 +17,8 @@ public class Main {
         supermercado.adicionarProduto(bebida);
         supermercado.adicionarProduto(carne);
         supermercado.calcularSubtotal();
+        supermercado.aplicarDesconto();
+        System.out.println("O valor total da compra com desconto é " + supermercado.getTotalCompra());
 
     }
 }

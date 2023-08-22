@@ -2,7 +2,7 @@ package br.com.htf.implementations;
 
 import br.com.htf.contracts.CalculoArea;
 
-public class Retangu extends CalculoArea {
+public class Retangulo implements CalculoArea {
 
  private double altura;
  private double base;
@@ -30,6 +30,16 @@ public class Retangu extends CalculoArea {
 
     @Override
     public double calcularAreaRetangulo(double base, double altura) {
+        return 0;
+    }
+
+    @Override
+    public double calcularAreaTriangulo(double base, double altura) {
+        return 0;
+    }
+
+    @Override
+    public double calcularAreaCirculo(double raio) {
         return 0;
     }
 }

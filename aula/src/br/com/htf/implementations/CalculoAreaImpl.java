@@ -1,10 +1,10 @@
-package aula.src.br.com.htf.implementations;
+package br.com.htf.implementations;
 import br.com.htf.contracts.CalculoArea;
 
 public class CalculoAreaImpl implements CalculoArea {
 
     private double base;
-    private static double altura;
+    private double altura;
     private double raio;
 
     public CalculoAreaImpl(double base, double altura, double raio) {
@@ -32,10 +32,4 @@ public class CalculoAreaImpl implements CalculoArea {
         //this.raio;
         return 0;
     }
-
-    static public double calculoaleatorio(){
-        base = 1.19 * altura;
-        return 0;
-    }
-
 }

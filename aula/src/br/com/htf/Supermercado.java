@@ -4,7 +4,6 @@ import br.com.htf.abstracts.Produto;
 import br.com.htf.models.Cereal;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Supermercado {
     public String getNome() {
@@ -33,7 +32,7 @@ public class Supermercado {
     public double calcularSubtotal() {
         double subtotal = 0;
         for (Produto produto : carrinhoDeCompras) {
-            double valorVendaProduto = produto.calcularValorTotal();
+            double valorVendaProduto = produto.calcularValorVenda();
             System.out.println("O valor total do produto " + produto.getNome() + " é " + valorVendaProduto);
             subtotal += valorVendaProduto;
         }

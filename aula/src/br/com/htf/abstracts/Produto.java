@@ -5,14 +5,41 @@ public abstract class Produto {
     private double preco;
     private int quantidade;
 
-    private String marca;
+    public Produto(){
 
-
+    }
     public Produto(String nome, double preco, int quantidade) {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.peso = 1;
     }
+    public Produto(String nome, double preco, double peso) {
+        this.nome = nome;
+        this.preco = preco;
+
+        this.peso = peso;
+    }
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    private String marca;
+    private double peso;
+
+
 
     public String getNome() {
         return nome;
@@ -38,5 +65,10 @@ public abstract class Produto {
         this.quantidade = quantidade;
     }
 
-    public abstract double calcularValorTotal();
+    public double calcularValorVenda(){
+        System.out.println("Calculando valor total de produtos");
+        return this.getPreco() * this.getQuantidade();
+    }
+
+
 }

@@ -1,17 +1,13 @@
 package br.com.htf.models;
 
-import br.com.htf.abstracts.Produto;
+import br.com.htf.abstracts.ProdutoFracionado;
 
-public class Carnes extends Produto {
+public class Carnes extends ProdutoFracionado {
 
 
     public Carnes(String nome, double preco, double peso) {
         super(nome, preco, peso);
     }
 
-    @Override
-    public double calcularValorVenda() {
-        System.out.println("Calculando valor total de Carnes");
-        return this.getPreco() * this.getPeso();
-    }
+
 }

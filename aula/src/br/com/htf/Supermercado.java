@@ -95,6 +95,8 @@ public class Supermercado {
         if (this.subtotal >= 50) {
             this.totalCompra = this.subtotal - (this.subtotal * (this.desconto / 100));
         }
+        // Se o subtotal for maior do que 100, aplicar desconto de 12%
+        // Se o subtotal for maior do que 200, aplicar desconto de 15%
         //IF INLINE
         // this.totalCompra = (this.subtotal >= 50)? this.subtotal - (this.subtotal * (this.desconto / 100)) : this.subtotal;
     }

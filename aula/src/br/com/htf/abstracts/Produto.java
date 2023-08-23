@@ -14,12 +14,7 @@ public abstract class Produto {
         this.quantidade = quantidade;
         this.peso = 1;
     }
-    public Produto(String nome, double preco, double peso) {
-        this.nome = nome;
-        this.preco = preco;
 
-        this.peso = peso;
-    }
     public String getMarca() {
         return marca;
     }

@@ -1,11 +1,11 @@
 package br.com.htf.models;
 
-import br.com.htf.abstracts.Produto;
+import br.com.htf.abstracts.ProdutoFracionado;
 
-public class Verduras extends Produto {
+public class Verduras extends ProdutoFracionado {
 
-    public Verduras(String nome, double preco, int quantidade) {
-        super(nome, preco, quantidade);
+
+    public Verduras(String nome, double preco, double peso) {
+        super(nome, preco, peso);
     }
-
 }

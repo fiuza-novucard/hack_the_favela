@@ -4,6 +4,7 @@ import br.com.htf.abstracts.Produto;
 import br.com.htf.models.Cereal;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Supermercado {
     public String getNome() {
@@ -58,7 +59,14 @@ public class Supermercado {
     }
 
     public void adicionarProduto(Produto produto) {
-        this.carrinhoDeCompras.add(produto);
+        try {
+            this.checkPrecoProdutoNaoPodeSerZero(produto);
+            this.carrinhoDeCompras.add(produto);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 
     public void removerProduto(Produto produto) {
@@ -99,6 +107,13 @@ public class Supermercado {
         // Se o subtotal for maior do que 200, aplicar desconto de 15%
         //IF INLINE
         // this.totalCompra = (this.subtotal >= 50)? this.subtotal - (this.subtotal * (this.desconto / 100)) : this.subtotal;
+    }
+
+    public void checkPrecoProdutoNaoPodeSerZero(Produto produto) throws Exception {
+        Double preco = produto.getPreco();
+        if (produto.getPreco() == 0  || preco == null ) {
+            throw new Exception("O preço do produto não pode ser zero");
+        }
     }
 
 }

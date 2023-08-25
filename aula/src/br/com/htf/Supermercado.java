@@ -1,6 +1,7 @@
 package br.com.htf;
 
 import br.com.htf.abstracts.Produto;
+import br.com.htf.exceptions.SupermercadoExceptions;
 import br.com.htf.models.Cereal;
 
 import java.util.ArrayList;
@@ -62,6 +63,13 @@ public class Supermercado {
         try {
             this.checkPrecoProdutoNaoPodeSerZero(produto);
             this.carrinhoDeCompras.add(produto);
+        } catch (SupermercadoExceptions e) {
+            produto.setPreco(1500);
+            produto.setPeso(50);
+            this.carrinhoDeCompras.add(produto);
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage() + "VERIFIQUE O PRODUTO");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -109,10 +117,10 @@ public class Supermercado {
         // this.totalCompra = (this.subtotal >= 50)? this.subtotal - (this.subtotal * (this.desconto / 100)) : this.subtotal;
     }
 
-    public void checkPrecoProdutoNaoPodeSerZero(Produto produto) throws Exception {
+    public void checkPrecoProdutoNaoPodeSerZero(Produto produto) throws IllegalArgumentException {
         Double preco = produto.getPreco();
         if (produto.getPreco() == 0  || preco == null ) {
-            throw new Exception("O preço do produto não pode ser zero");
+            throw new SupermercadoExceptions("O preço do produto não pode ser zero");
         }
     }
 

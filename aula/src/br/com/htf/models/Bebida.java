@@ -8,11 +8,11 @@ public class Bebida extends Produto {
     }
 
     public void setVolume(double volume) {
-        this.volume = volume;
+       this.volume = volume;
     }
 
     private double volume;
-    public Bebida(String nome, double preco, int quantidade) {
+    public Bebida(String nome, double preco, int quantidade)  {
         super(nome, preco, quantidade);
     }
 

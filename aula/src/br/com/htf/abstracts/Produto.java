@@ -8,11 +8,16 @@ public abstract class Produto {
     public Produto(){
 
     }
-    public Produto(String nome, double preco, int quantidade) {
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.peso = 1;
+    public Produto(String nome, double preco, int quantidade)  {
+        try {
+            this.checkPrecoNegativo(preco);
+            this.nome = nome;
+            this.preco = preco;
+            this.quantidade = quantidade;
+            this.peso = 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getMarca() {
@@ -63,6 +68,12 @@ public abstract class Produto {
     public double calcularValorVenda(){
         System.out.println("Calculando valor total de produtos");
         return this.getPreco() * this.getQuantidade();
+    }
+
+    public void checkPrecoNegativo(double preco) throws Exception{
+        if (preco < 0){
+            throw new Exception("Preço não pode ser negativo");
+        }
     }
 
 

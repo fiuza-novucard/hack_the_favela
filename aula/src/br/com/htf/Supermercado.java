@@ -52,6 +52,8 @@ public class Supermercado {
 
     private double totalCompra;
     private double desconto = 10;
+    private double desconto2 = 12;
+    private double desconto3 = 15;
     private String nome;
     private ArrayList<Produto> carrinhoDeCompras;
 
@@ -62,6 +64,7 @@ public class Supermercado {
     public void adicionarProduto(Produto produto) {
         try {
             this.checkPrecoProdutoNaoPodeSerZero(produto);
+            this.checkquantidadeProdutoNaoPodeSerZero(produto);
             this.carrinhoDeCompras.add(produto);
         } catch (SupermercadoExceptions e) {
             produto.setPreco(1500);
@@ -111,6 +114,12 @@ public class Supermercado {
         if (this.subtotal >= 50) {
             this.totalCompra = this.subtotal - (this.subtotal * (this.desconto / 100));
         }
+        if(this.subtotal > 100){
+            this.totalCompra = this.subtotal - (this.subtotal * (this.desconto2/ 100));
+        }
+        if(this.subtotal > 200){
+            this.totalCompra = this.subtotal - (this.subtotal * (this.desconto3 / 100));
+        }
         // Se o subtotal for maior do que 100, aplicar desconto de 12%
         // Se o subtotal for maior do que 200, aplicar desconto de 15%
         //IF INLINE
@@ -122,6 +131,11 @@ public class Supermercado {
         if (produto.getPreco() == 0  || preco == null ) {
             throw new SupermercadoExceptions("O preço do produto não pode ser zero");
         }
+    }
+    public void checkquantidadeProdutoNaoPodeSerZero(Produto produto) throws  IllegalArgumentException {
+        double quantidade = produto.getQuantidade();
+        if( produto.getQuantidade() < 0 && quantidade == 0);
+        throw new SupermercadoExceptions("quantidade do produto nao pode ser  zerada nem negativa");
     }
 
 }

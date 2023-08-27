@@ -11,6 +11,7 @@ public abstract class Produto {
     public Produto(String nome, double preco, int quantidade)  {
         try {
             this.checkPrecoNegativo(preco);
+            this.checkQuantidadeNegativa(quantidade);
             this.nome = nome;
             this.preco = preco;
             this.quantidade = quantidade;
@@ -73,6 +74,11 @@ public abstract class Produto {
     public void checkPrecoNegativo(double preco) throws Exception{
         if (preco < 0){
             throw new Exception("Preço não pode ser negativo");
+        }
+    }
+    public void checkQuantidadeNegativa(double quantidade) throws  Exception{
+        if (quantidade < 0){
+            throw new Exception("Quantidade nao pode ser negativa");
         }
     }
 

@@ -10,11 +10,11 @@ public class Main {
         Supermercado supermercado = new Supermercado();
         supermercado.setNome("Ponto Frio");
 
-        Cereal cereal = new Cereal("Neston", 5.00, 2);
+        Cereal cereal = new Cereal("Neston", 5.00, 0);
         cereal.setPeso(0.5);
         Bebida bebida = new Bebida("Coca-Cola", 5.00, 2);
         bebida.setVolume(2.0);
-        Carnes carne = new Carnes("Picanha", -55.00, 1.5);
+        Carnes carne = new Carnes("Picanha", 55.00, 1.5);
         supermercado.adicionarProduto(cereal);
         supermercado.adicionarProduto(bebida);
         supermercado.adicionarProduto(carne);
@@ -22,7 +22,7 @@ public class Main {
         supermercado.aplicarDesconto();
         System.out.println("O valor total da compra com desconto é " + supermercado.getTotalCompra());
 
-        //Adicionar mais uma classe que hera de produto fracionado
+        //Adicionar mais uma classe que herda de produto fracionado
         // adicionar ao carrinho o produto fracionado
 
 

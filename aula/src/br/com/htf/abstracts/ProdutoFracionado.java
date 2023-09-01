@@ -1,5 +1,7 @@
 package br.com.htf.abstracts;
 
+import br.com.htf.abstracts.Produto;
+
 public abstract class ProdutoFracionado extends Produto {
     private double peso;
 

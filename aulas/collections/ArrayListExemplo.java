@@ -6,6 +6,9 @@ import java.util.List;
 
 public class ArrayListExemplo {
     public static void main(String[] args) {
+
+        String[] nomes = new String[1];
+        ArrayList<String> nome = new ArrayList<>();
         List<String> pessoas = new ArrayList<>();
 
         String pessoa1 = "Alexis";

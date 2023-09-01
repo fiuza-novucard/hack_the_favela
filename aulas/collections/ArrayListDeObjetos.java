@@ -23,7 +23,7 @@ public class ArrayListDeObjetos {
         pessoas.add(pessoa7);
         pessoas.add(pessoa1);
 
-        System.out.println(pessoas);
+        System.out.println(pessoas.get(5));
 
         System.out.println(pessoas);
 

@@ -1,4 +1,5 @@
-package exercicio;
+package excecoes.Exercicio_Collection;
+
 public class Pessoa  implements Comparable<Pessoa> {
     private String nome;
     private int idade;
@@ -38,3 +39,5 @@ public class Pessoa  implements Comparable<Pessoa> {
         }
     }
 }
+
+

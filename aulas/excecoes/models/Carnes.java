@@ -1,4 +1,4 @@
-package br.com.htf.models;
+package excecoes.models;
 
 import br.com.htf.abstracts.ProdutoFracionado;
 

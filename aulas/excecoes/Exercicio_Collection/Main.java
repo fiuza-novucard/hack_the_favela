@@ -1,4 +1,4 @@
-package exercicio;
+package excecoes.Exercicio_Collection;
 
 import javax.swing.*;
 import java.util.ArrayList;

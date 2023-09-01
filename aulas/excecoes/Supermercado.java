@@ -1,4 +1,4 @@
-package br.com.htf;
+package excecoes;
 
 import br.com.htf.abstracts.Produto;
 import br.com.htf.exceptions.SupermercadoExceptions;

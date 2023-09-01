@@ -1,4 +1,4 @@
-package aulas.collections;
+package collections;
 
 public class Pessoas implements Comparable<Pessoas> {
 

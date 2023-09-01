@@ -1,4 +1,4 @@
-package br.com.htf.exceptions;
+package excecoes;
 
 public class SupermercadoExceptions extends IllegalArgumentException{
     public SupermercadoExceptions(String s) {

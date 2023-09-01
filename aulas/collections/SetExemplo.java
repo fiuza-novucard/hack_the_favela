@@ -1,4 +1,4 @@
-package collections;
+package aulas.collections;
 
 import java.util.*;
 

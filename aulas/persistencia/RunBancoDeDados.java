@@ -1,9 +1,14 @@
 package persistencia;
 
 import persistencia.conexao.PersistenciaAluno;
+import persistencia.conexao.PersistenciaMateria;
+import persistencia.conexao.PersistenciaProfessor;
 import persistencia.modelo.Aluno;
+import persistencia.modelo.Professor;
 
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -11,22 +16,97 @@ import java.util.Scanner;
 
 public class RunBancoDeDados {
 
+
     public static void main(String[] args) {
+
+        menuInicial();
+    }
+    public static void menuInicial(){
+        Scanner scanner = new Scanner(System.in);
+        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2");
+        int opcao = scanner.nextInt();
+
+        switch (opcao){
+            case 1:
+                out("Cadastrando aluno");
+                cadastrarAluno();
+                break;
+            case 2:
+                out("Cadastrando professor");
+                cadastrarProfessor();
+                break;
+            default:
+                out("Opção inválida");
+                break;
+        }
+    }
+
+    private static void cadastrarProfessor()  {
+
+        Professor professor = new Professor();
+        PersistenciaProfessor persistenciaProfessor = new PersistenciaProfessor();
+        PersistenciaMateria persistenciaMateria = new PersistenciaMateria();
+        ArrayList<String> materias = null;
+        try {
+            materias = persistenciaMateria.buscarMaterias();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Scanner scanner = new Scanner(System.in);
+
+        out("Digite o nome do professor:");
+        String nome = scanner.nextLine();
+        professor.setNome(nome);
+        for(String materia : materias){
+            out(materia);
+        }
+        out("Digite o código da matéria do professor:");
+        professor.setMateria(scanner.nextInt());
+        out("Verifique os dados do professor:");
+        out("Nome: " + professor.getNome());
+        out("Matéria: " + professor.getMateria());
+        out("Para confirmar digite S, para corrigir digite N, para voltar ao menu inicial digite V");
+        persistenciaProfessor.Salvar(professor);
+
+
+    }
+
+    public static void cadastrarAluno(){
+        Scanner scanner = new Scanner(System.in);
+
         PersistenciaAluno persistenciaAluno = new PersistenciaAluno();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Scanner scanner = new Scanner(System.in);
+
         Aluno aluno = new Aluno();
         // Solicita ao usuário que digite uma entrada
-        System.out.println("Digite o nome do aluno:");
+        out("Digite o nome do aluno:");
         aluno.setNome(scanner.nextLine());
-        System.out.println("Digite a data de nascimento do aluno:");
+        out("Digite a data de nascimento do aluno:");
         Date dataNascimento =  sdf.parse(scanner.nextLine(), new java.text.ParsePosition(0));
         aluno.setDataNascimento(dataNascimento);
         aluno.setDataMatricula(Date.from(Instant.now()));
-        persistenciaAluno.Salvar(aluno);
-
-
-        // Exibe a entrada do usuário
-
+        out("Verifique os dados do aluno:");
+        out("Nome: " + aluno.getNome());
+        out("Data de nascimento: " + aluno.getDataNascimento());
+        out("Data de matrícula: " + aluno.getDataMatricula());
+        out("Para confirmar digite S, para corrigir digite N, para voltar ao menu inicial digite V");
+        String confirmacao = scanner.nextLine();
+        switch (confirmacao){
+            case "S":
+                persistenciaAluno.Salvar(aluno);
+                break;
+            case "N":
+                out("Cadastro cancelado");
+                cadastrarAluno();
+                break;
+            default:
+                out("Opção inválida");
+                menuInicial();
+                break;
+        }
+        menuInicial();
+    }
+    private static void out(String s) {
+        System.out.println(s);
     }
 }

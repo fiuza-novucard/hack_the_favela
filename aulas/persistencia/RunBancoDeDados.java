@@ -59,18 +59,26 @@ public class RunBancoDeDados {
         out("Para listar todos  alunos digite 1 \nPara buscar pelo nome digite 2");
         PersistenciaAluno persistenciaAluno = new PersistenciaAluno();
         int opcao = scanner.nextInt();
+        ArrayList<String> alunos = null;
         switch (opcao){
             case 1:
                 out("Listando todos os alunos");
-                persistenciaAluno.buscarAlunos();
+                alunos = persistenciaAluno.buscarAlunos();
                 break;
             case 2:
+                out("Digite o nome do aluno:");
                 out("Buscando aluno pelo nome");
+                String nome = scanner.nextLine();
+                alunos = persistenciaAluno.buscarAlunos(nome);
                 break;
             default:
                 out("Opção inválida");
                 break;
         }
+        for(String aluno : alunos){
+            out(aluno);
+        }
+
     }
 
     private static void cadastrarProfessor() throws SQLException {

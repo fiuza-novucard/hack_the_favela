@@ -53,4 +53,14 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
 
         return resultado;
     }
+
+    public void deletarAluno(int codigo) {
+        String query = "DELETE FROM aluno WHERE codigo = " + codigo;
+        try {
+            this.connection.createStatement().executeUpdate(query);
+            System.out.println("Aluno deletado com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

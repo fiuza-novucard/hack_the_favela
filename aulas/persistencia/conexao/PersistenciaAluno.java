@@ -2,11 +2,14 @@ package persistencia.conexao;
 
 import persistencia.modelo.Aluno;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class PersistenciaAluno extends ConexaoBancoDeDados{
-    public PersistenciaAluno() {
-        super();
+    Connection connection;
+    public PersistenciaAluno() throws SQLException {
+        this.connection = ConexaoBancoDeDados.getInstance().getConnection();
     }
     public void Salvar(Aluno aluno) {
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

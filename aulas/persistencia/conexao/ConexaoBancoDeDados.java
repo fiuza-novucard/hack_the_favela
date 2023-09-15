@@ -5,23 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoBancoDeDados {
-    String host = "localhost";
-    String database = "aula";
-    String user = "root";
-    String password = "123456";
+    static String host = "localhost";
+    static String database = "aula";
+    static String user = "root";
+    static String password = "123456";
 
-    int port = 3306;
-
-    Connection connection;
+    static int port = 3306;
+    private static ConexaoBancoDeDados instance;
+    private static Connection connection;
     // Conecta ao banco de dados MySQL
-    public ConexaoBancoDeDados(){
-        try {
-            conecta();
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
+
     private void conecta() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         if(this.connection == null ){
@@ -32,6 +25,18 @@ public class ConexaoBancoDeDados {
     }
     public Connection getConnection() {
         return connection;
+    }
+    public static ConexaoBancoDeDados getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new ConexaoBancoDeDados();
+            connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database + "?useTimezone=true&serverTimezone=UTC", user, password);
+
+        }
+        return instance;
+    }
+
+    public void closeConnection() throws SQLException {
+        this.connection.close();
     }
 
 }

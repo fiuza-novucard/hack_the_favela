@@ -19,11 +19,15 @@ public class RunBancoDeDados {
 
     public static void main(String[] args) {
 
-        menuInicial();
+        try {
+            menuInicial();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-    public static void menuInicial(){
+    public static void menuInicial() throws SQLException {
         Scanner scanner = new Scanner(System.in);
-        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2");
+        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2\nPara vincular professor e matéria digite 3\nPara ");
         int opcao = scanner.nextInt();
 
         switch (opcao){
@@ -35,13 +39,17 @@ public class RunBancoDeDados {
                 out("Cadastrando professor");
                 cadastrarProfessor();
                 break;
+            case 3:
+                out("Vincular professor e matéria");
+                vincularProfessorMateria();
+                break;
             default:
                 out("Opção inválida");
                 break;
         }
     }
 
-    private static void cadastrarProfessor()  {
+    private static void cadastrarProfessor() throws SQLException {
 
         Professor professor = new Professor();
         PersistenciaProfessor persistenciaProfessor = new PersistenciaProfessor();
@@ -71,7 +79,7 @@ public class RunBancoDeDados {
 
     }
 
-    public static void cadastrarAluno(){
+    public static void cadastrarAluno() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         PersistenciaAluno persistenciaAluno = new PersistenciaAluno();
@@ -108,5 +116,30 @@ public class RunBancoDeDados {
     }
     private static void out(String s) {
         System.out.println(s);
+    }
+    public static void vincularProfessorMateria() throws SQLException {
+        PersistenciaProfessor persistenciaProfessor = new PersistenciaProfessor();
+        PersistenciaMateria persistenciaMateria = new PersistenciaMateria();
+        ArrayList<String> materias = null;
+        ArrayList<String> professores = null;
+        try{
+            materias = persistenciaMateria.buscarMaterias();
+            professores = persistenciaProfessor.buscarProfessor();
+            Scanner scanner = new Scanner(System.in);
+            out("Selecione o professor:");
+            for(String professor : professores){
+                out(professor);
+            }
+            int codigoProfessor = scanner.nextInt();
+            out("Selecione a matéria:");
+            for(String materia : materias){
+                out(materia);
+            }
+            int codigoMateria = scanner.nextInt();
+            persistenciaProfessor.vincularProfessorMateria(codigoProfessor, codigoMateria);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -66,8 +66,8 @@ public class RunBancoDeDados {
                 alunos = persistenciaAluno.buscarAlunos();
                 break;
             case 2:
+                scanner.nextLine();
                 out("Digite o nome do aluno:");
-                out("Buscando aluno pelo nome");
                 String nome = scanner.nextLine();
                 alunos = persistenciaAluno.buscarAlunos(nome);
                 break;
@@ -78,6 +78,8 @@ public class RunBancoDeDados {
         for(String aluno : alunos){
             out(aluno);
         }
+
+        buscarAluno();
 
     }
 

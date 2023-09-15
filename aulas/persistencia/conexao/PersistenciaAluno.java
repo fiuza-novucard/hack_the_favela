@@ -24,4 +24,7 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
             e.printStackTrace();
         }
     }
+
+    public void buscarAlunos() {
+    }
 }

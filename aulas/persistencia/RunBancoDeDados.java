@@ -26,8 +26,8 @@ public class RunBancoDeDados {
         }
     }
     public static void menuInicial() throws SQLException {
+        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2\nPara vincular professor e matéria digite 3\nPara buscar aluno digite 4 ");
         Scanner scanner = new Scanner(System.in);
-        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2\nPara vincular professor e matéria digite 3\nPara ");
         int opcao = scanner.nextInt();
 
         switch (opcao){
@@ -42,6 +42,30 @@ public class RunBancoDeDados {
             case 3:
                 out("Vincular professor e matéria");
                 vincularProfessorMateria();
+                break;
+            case 4:
+                out("Buscando aluno");
+                buscarAluno();
+                break;
+            default:
+                out("Opção inválida");
+                break;
+        }
+    }
+
+    private static void buscarAluno() throws SQLException {
+
+        Scanner scanner = new Scanner(System.in);
+        out("Para listar todos  alunos digite 1 \nPara buscar pelo nome digite 2");
+        PersistenciaAluno persistenciaAluno = new PersistenciaAluno();
+        int opcao = scanner.nextInt();
+        switch (opcao){
+            case 1:
+                out("Listando todos os alunos");
+                persistenciaAluno.buscarAlunos();
+                break;
+            case 2:
+                out("Buscando aluno pelo nome");
                 break;
             default:
                 out("Opção inválida");

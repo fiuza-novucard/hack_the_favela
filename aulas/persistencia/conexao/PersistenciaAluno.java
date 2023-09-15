@@ -56,8 +56,15 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
 
     public void deletarAluno(int codigo) {
         String query = "DELETE FROM aluno WHERE codigo = " + codigo;
+        executaDelete(query);
+    }
+    public void deletarAluno(String nome) {
+        String query = "DELETE FROM aluno WHERE nome LIKE '%" + nome + "%'";
+        executaDelete(query);
+    }
+    public void executaDelete(String consultaDeDelete){
         try {
-            this.connection.createStatement().executeUpdate(query);
+            this.connection.createStatement().executeUpdate(consultaDeDelete);
             System.out.println("Aluno deletado com sucesso!");
         } catch (Exception e) {
             e.printStackTrace();

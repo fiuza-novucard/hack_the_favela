@@ -79,8 +79,8 @@ public class RunBancoDeDados {
             out(aluno);
         }
         out("Digito o código do aluno que deseja deletar");
-        int codigo = scanner.nextInt();
-        persistenciaAluno.deletarAluno(codigo);
+        String nome = scanner.nextLine();
+        persistenciaAluno.deletarAluno(nome);
         //deletarAluno();
 
     }

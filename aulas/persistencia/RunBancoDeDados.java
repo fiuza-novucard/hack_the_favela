@@ -66,7 +66,7 @@ public class RunBancoDeDados {
                 alunos = persistenciaAluno.buscarAlunos();
                 break;
             case 2:
-                scanner.nextLine();
+                scanner.reset();
                 out("Digite o nome do aluno:");
                 String nome = scanner.nextLine();
                 alunos = persistenciaAluno.buscarAlunos(nome);
@@ -78,10 +78,15 @@ public class RunBancoDeDados {
         for(String aluno : alunos){
             out(aluno);
         }
-        out("Digito o código do aluno que deseja deletar");
-        String nome = scanner.nextLine();
-        persistenciaAluno.deletarAluno(nome);
-        //deletarAluno();
+
+        out("Digito o código do aluno que deseja deletar ou 0 para voltar ao menu inicial");
+        int codigo = scanner.nextInt();
+        if (codigo > 0) {
+            persistenciaAluno.deletarAluno(codigo);
+        }else{
+            menuInicial();
+        }
+
 
     }
 

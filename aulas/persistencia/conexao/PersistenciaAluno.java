@@ -3,8 +3,10 @@ package persistencia.conexao;
 import persistencia.modelo.Aluno;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class PersistenciaAluno extends ConexaoBancoDeDados{
     Connection connection;
@@ -25,6 +27,30 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
         }
     }
 
-    public void buscarAlunos() {
+    public ArrayList<String> buscarAlunos() {
+        String consultaTodos = "SELECT * FROM aluno ORDER BY nome ASC";
+        return executaConsulta(consultaTodos);
+    }
+
+    public ArrayList<String> buscarAlunos(String nome) {
+        String consultaPorNome = "SELECT * FROM aluno WHERE nome LIKE '%" + nome + "%' ORDER BY nome ASC";
+        return executaConsulta(consultaPorNome);
+    }
+    public ArrayList<String> executaConsulta(String consulta){
+        ArrayList<String> resultado = new ArrayList<>();
+        try {
+            ResultSet linhas =  this.connection.createStatement().executeQuery(consulta);
+
+            while (linhas.next()){
+                int codigo = linhas.getInt("codigo");
+                String materia = linhas.getString("nome");
+                String linha = codigo + " - " + materia;
+                resultado.add(linha);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultado;
     }
 }

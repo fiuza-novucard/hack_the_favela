@@ -26,7 +26,7 @@ public class RunBancoDeDados {
         }
     }
     public static void menuInicial() throws SQLException {
-        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2\nPara vincular professor e matéria digite 3\nPara buscar aluno digite 4 ");
+        out("Para cadastrar aluno digite 1 \nPara cadastrar professor digite 2\nPara vincular professor e matéria digite 3\nPara buscar aluno digite 4");
         Scanner scanner = new Scanner(System.in);
         int opcao = scanner.nextInt();
 

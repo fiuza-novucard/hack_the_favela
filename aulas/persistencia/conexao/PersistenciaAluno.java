@@ -31,7 +31,10 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
         String consultaTodos = "SELECT * FROM aluno ORDER BY nome ASC";
         return executaConsulta(consultaTodos);
     }
-
+    public ArrayList<String> buscarAlunos(int codigo) {
+        String consultaPorCodigo = "SELECT * FROM aluno WHERE codigo = " + codigo + " ORDER BY nome ASC";
+        return executaConsulta(consultaPorCodigo);
+    }
     public ArrayList<String> buscarAlunos(String nome) {
         String consultaPorNome = "SELECT * FROM aluno WHERE nome LIKE '%" + nome + "%' ORDER BY nome ASC";
         return executaConsulta(consultaPorNome);
@@ -70,4 +73,16 @@ public class PersistenciaAluno extends ConexaoBancoDeDados{
             e.printStackTrace();
         }
     }
+
+    public void editarAluno(int codigo, String novoNome) {
+        String query = "UPDATE aluno SET nome = '" + novoNome + "' WHERE codigo = " + codigo;
+        try {
+            System.out.println("Aluno editado com sucesso! "+query);
+            this.connection.createStatement().executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

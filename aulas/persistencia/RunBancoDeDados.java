@@ -75,16 +75,32 @@ public class RunBancoDeDados {
                 out("Opção inválida");
                 break;
         }
+
         for(String aluno : alunos){
             out(aluno);
         }
 
-        out("Digito o código do aluno que deseja deletar ou 0 para voltar ao menu inicial");
-        int codigo = scanner.nextInt();
-        if (codigo > 0) {
-            persistenciaAluno.deletarAluno(codigo);
-        }else{
-            menuInicial();
+        scanner.reset();
+        out("Para editar aluno dige e\nPara deletar aluno digite d");
+
+        String opcaoEditar = scanner.next();
+
+        switch (opcaoEditar){
+            case "e":
+                out("Digite o código do aluno que deseja editar:");
+                int codigo = scanner.nextInt();
+                scanner.reset();
+                out("Digite o novo nome do aluno:");
+                String novoNome = scanner.next();
+                persistenciaAluno.editarAluno(codigo, novoNome);
+                break;
+            case "d":
+                //Digitar o códgio do que aluno que deseja deletar
+                //Vão pegar o código do aluno
+                // persistenciaAluno.deletarAluno(codigo);
+            default:
+                out("Opção inválida");
+                break;
         }
 
 

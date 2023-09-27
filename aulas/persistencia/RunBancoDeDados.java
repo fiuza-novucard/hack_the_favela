@@ -95,9 +95,11 @@ public class RunBancoDeDados {
                 persistenciaAluno.editarAluno(codigo, novoNome);
                 break;
             case "d":
-                //Digitar o códgio do que aluno que deseja deletar
-                //Vão pegar o código do aluno
-                // persistenciaAluno.deletarAluno(codigo);
+                out("Digite o codigo do aluno que deseja deletar:");
+                codigo = scanner.nextInt();
+                scanner.remove();
+                persistenciaAluno.deletarAluno(codigo);
+                break;
             default:
                 out("Opção inválida");
                 break;

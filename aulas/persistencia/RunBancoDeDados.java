@@ -97,7 +97,6 @@ public class RunBancoDeDados {
             case "d":
                 out("Digite o codigo do aluno que deseja deletar:");
                 codigo = scanner.nextInt();
-                scanner.remove();
                 persistenciaAluno.deletarAluno(codigo);
                 break;
             default:

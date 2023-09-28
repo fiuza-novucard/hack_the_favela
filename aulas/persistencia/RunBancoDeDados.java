@@ -100,6 +100,7 @@ public class RunBancoDeDados {
                 persistenciaAluno.deletarAluno(codigoDelete);
 
 
+
             default:
                 out("Opção inválida");
                 break;

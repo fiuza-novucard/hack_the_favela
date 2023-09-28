@@ -99,6 +99,7 @@ public class RunBancoDeDados {
                 int codigoDelete = scanner.nextInt();
                 persistenciaAluno.deletarAluno(codigoDelete);
 
+
             default:
                 out("Opção inválida");
                 break;

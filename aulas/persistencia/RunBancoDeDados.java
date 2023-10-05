@@ -49,7 +49,8 @@ public class RunBancoDeDados {
                 break;
             default:
                 out("Opção inválida");
-                break;
+                throw new IllegalArgumentException("Unexpected value: " + opcao);
+
         }
     }
 

@@ -1,9 +1,9 @@
-package com.aulas.spring;
+package com.aulas.spring.pedido;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Pedido {
+public class Pedido {
     private List<ItemPedido> itens = new ArrayList<>();
 
     public List<ItemPedido> getItens() {

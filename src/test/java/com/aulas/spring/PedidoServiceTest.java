@@ -1,5 +1,9 @@
 package com.aulas.spring;
 
+import com.aulas.spring.pedido.CalculadoraDesconto;
+import com.aulas.spring.pedido.ItemPedido;
+import com.aulas.spring.pedido.Pedido;
+import com.aulas.spring.pedido.PedidoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.InjectMocks;

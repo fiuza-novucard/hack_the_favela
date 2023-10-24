@@ -1,4 +1,4 @@
-package com.aulas.spring;
+package com.aulas.spring.pedido;
 
 public class ItemPedido {
     private String nome;

@@ -2,14 +2,14 @@ package com.aulas.spring.models;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
     @Column
     private String email;

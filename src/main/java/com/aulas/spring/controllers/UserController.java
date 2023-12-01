@@ -36,4 +36,9 @@ public class UserController {
         }
     }
 
+    @PutMapping("/update/{id}")
+    public HttpStatus updateUser(@PathVariable Long id, @RequestBody User user) {
+
+    }
+
 }

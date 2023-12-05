@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -37,8 +38,41 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public HttpStatus updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@RequestBody User updatedUser, @PathVariable Long id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isPresent()) {
+            User userBusca = user.get();
+            userBusca.setName(updatedUser.getName());
+            userBusca.setEmail(updatedUser.getEmail());
+
+            User userSalvar = userRepository.save(userBusca);
+            return new ResponseEntity<>(userSalvar, HttpStatus.OK);
+
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
     }
+
+    @GetMapping("/busca/todos")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> userList = userRepository.findAll();
+
+        return new ResponseEntity<>(userList, HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 }

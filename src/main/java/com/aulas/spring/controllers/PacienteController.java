@@ -27,4 +27,9 @@ public class PacienteController {
        return pacienteHistoricoRepository.findByCampoFiltrado(id.intValue());
     }
 
+    @GetMapping("/media-imc/{dataInicio}/{dataFim}/{id}")
+    public double mediaImc(@RequestParam(value = "id", defaultValue = "0") Long id, @RequestParam(value = "dataInicio", defaultValue = "0") String dataInicio, @RequestParam(value = "dataFim", defaultValue = "0") String dataFim) {
+        return pacienteHistoricoRepository.mediaImc(id.intValue(), dataInicio, dataFim);
+    }
+
 }

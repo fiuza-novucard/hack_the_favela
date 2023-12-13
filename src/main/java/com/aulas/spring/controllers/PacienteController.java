@@ -26,12 +26,17 @@ public class PacienteController {
     public List<Paciente_imc> listarHistorico(@RequestParam(value = "id", defaultValue = "0") Long id) {
        return pacienteHistoricoRepository.findByCampoFiltrado(id.intValue());
     }
-    @PostMapping(value ="salvar")
+    @PostMapping(value ="salvarpaciente")
     @ResponseBody
-     public ResponseEntity<Paciente> salvar(@RequestBody Paciente paciente){
+     public ResponseEntity<Paciente> salvarpaciente(@RequestBody Paciente paciente){
         Paciente cliente = pacienteRepository.save(paciente);
         return new ResponseEntity<Paciente>(cliente, HttpStatus.CREATED);
 }
+    @PostMapping(value ="salvardadospacienteimc")
+    public  ResponseEntity<Paciente_imc> salvardadospacienteimc(@RequestBody Paciente_imc paciente_imc){
+        Paciente_imc dados = pacienteHistoricoRepository.save(paciente_imc);
+        return  new ResponseEntity<Paciente_imc>(dados,HttpStatus.CREATED);
+    }
 
     @GetMapping("/media-imc/{dataInicio}/{dataFim}/{id}")
     public double mediaImc(@RequestParam(value = "id", defaultValue = "0") Long id, @RequestParam(value = "dataInicio", defaultValue = "0") String dataInicio, @RequestParam(value = "dataFim", defaultValue = "0") String dataFim) {
